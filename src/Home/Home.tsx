@@ -25,7 +25,7 @@ export function Home() {
   document.title = "Home | thomasmak.in";
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-5 m-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-5 m-4 gap-4 max-w-7xl self-center justify-self-center">
       <div className="col-span-1 md:col-span-2 flex flex-col gap-4">
         <div className="bg-light dark:bg-dark p-4 rounded-lg shadow-lg flex flex-col gap-4">
           <h1 className="text-5xl"><strong>Hey!</strong> I'm Thomas</h1>
