@@ -54,7 +54,7 @@ export function Layout() {
               </NavLink>
             </div>
             <div className="flex-col">
-              <h1 className="text-2xl hover:text-gray-500 transition duration-150 ease-in-out">
+              <h1 className="text-xl md:text-2xl hover:text-gray-500 transition duration-150 ease-in-out">
                 <NavLink to={{ pathname: "/" }}>
                   <strong>Thomas Makin</strong>
                 </NavLink>

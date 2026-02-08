@@ -37,7 +37,10 @@
 
 .post h1 {
     font-weight: bold;
-    font-size: 32px;
+    font-size: var(--text-2xl);
+    @media (min-width: theme(--breakpoint-md)) {
+        font-size: var(--text-3xl);
+    }
 }
 
 .post h2 {
@@ -47,14 +50,20 @@
     align-items: center;
 
     font-weight: bold;
-    font-size: 24px;
+    font-size: var(--text-xl);
+    @media (min-width: theme(--breakpoint-md)) {
+        font-size: var(--text-2xl);
+    }
 }
 
 .post h2::after {
     position: absolute;
     bottom: 0px;
     height: 0.25rem;
-    width: 8rem;
+    width: 6rem;
+    @media (min-width: theme(--breakpoint-md)) {
+        width: 8rem;
+    }
     content: "";
     border-radius: 9999px;
     background: linear-gradient(90deg,rgba(49, 204, 58, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(217, 60, 235, 1) 100%);
@@ -62,24 +71,31 @@
 
 .post h3 {
     font-weight: bold;
-    font-size: 20px;
+    font-size: var(--text-xl);
 }
 
 .post h4 {
     font-weight: bold;
-    font-size: 16px;
+    font-size: var(--text-lg);
 }
 
 .post h5 {
-    font-size: 16px;
+    font-size: var(--text-lg);
 }
 
 .post h6 {
-    font-size: 14px;
+    font-size: var(--text-base);
+}
+
+.post h7 {
+    font-size: var(--text-base);
 }
 
 .post pre {
-    background-color: var(--color-bg);
+    background-color: var(--color-white);
+    @variant dark {
+        background-color: var(--color-bg);
+    }
     padding: calc(var(--spacing) * 3);
     border-radius: var(--radius-sm);
     overflow-x: auto;

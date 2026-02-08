@@ -10,6 +10,8 @@ import 'prismjs/components/prism-bash';
 export function Post() {
   const { post } = useLoaderData();
 
+  document.title = [post.data.title, "| thomasmak.in"].join(" ");
+
   useEffect(() => {
     Prism.highlightAll();
   }, []);
@@ -18,7 +20,7 @@ export function Post() {
     <div className="p-4 h-full w-full flex flex-row justify-center items-center max-w-6xl mx-auto">
       <div className="h-full w-full grid grid-cols-1 md:grid-cols-5 gap-4">
         <Sidebar/>
-        <div className="bg-light dark:bg-dark rounded-lg shadow-lg col-span-1 md:col-span-4 p-6 flex flex-col gap-4 post overflow-y-auto overflow-x-hidden">
+        <div className="bg-light dark:bg-dark rounded-lg shadow-lg col-span-1 md:col-span-4 p-6 flex flex-col gap-4 overflow-y-auto overflow-x-hidden">
           <div className='relative p-4 rounded-md shadow-lg'>
             <img
               src={post.data.cover}
@@ -27,7 +29,7 @@ export function Post() {
             />
             <div className="absolute inset-0 bg-linear-to-t from-light dark:from-dark from-10% via-light/80 dark:via-dark/80 via-30% to-transparent to-70%"></div>
             <div className="flex flex-col z-10 pt-25 justify-end">
-              <h1 className="text-3xl z-10 mb-2 font-bold">{post.data.title}</h1>
+              <h1 className="text-2xl md:text-3xl z-10 mb-2 font-bold">{post.data.title}</h1>
             </div>
           </div>
           <div className="z-10 justify-end">

@@ -22,6 +22,8 @@ const links: BoxLink[] = [
 ];
 
 export function Home() {
+  document.title = "Home | thomasmak.in";
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-5 m-4 gap-4">
       <div className="col-span-1 md:col-span-2 flex flex-col gap-4">
