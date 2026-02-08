@@ -1,0 +1,25 @@
+services:
+  blog:
+    container_name: blog
+    hostname: 'thomasmak.in'
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=traefik'
+      - 'traefik.port=80'
+      - 'traefik.http.routers.blog.entrypoints=https'
+      - 'traefik.http.routers.blog.rule=Host(`thomasmak.in`)'
+      - 'traefik.http.routers.blog.tls=true'
+      - 'traefik.http.routers.blog.tls.certresolver=letsEncrypt'
+      - 'traefik.http.routers.blog.middlewares=default@file'
+      - 'traefik.http.services.blog.loadbalancer.server.port=3000'
+    networks:
+      - traefik
+    command: [ "bun", "run", "./src/index.ts" ]
+networks:
+  traefik:
+    driver: bridge
+    external: true
