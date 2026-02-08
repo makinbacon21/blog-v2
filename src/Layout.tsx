@@ -47,59 +47,59 @@ export function Layout() {
       <div className="fixed rounded-full w-500 h-500 -bottom-200 -right-200 dark:w-300 dark:h-300 dark:-bottom-100 dark:-right-100 bg-radial from-baconpink to-transparent to-50% opacity-80 dark:opacity-60" />
       <div className="text-bg bg-white dark:text-white dark:bg-bg font-sans w-screen h-screen overscroll-x-contain">
         <div className="w-full h-full relative z-10 flex flex-col">
-          <header className="h-20 bg-light dark:bg-dark flex flex-row p-4 gap-4 items-center drop-shadow-md">
-            <div className="rounded-md h-full overflow-hidden hover:scale-120 transition duration-150 ease-in-out">
-              <NavLink to={{ pathname: "/" }}>
-                <img src={logo} alt="TJM logo" className="h-full" />
-              </NavLink>
-            </div>
-            <div className="flex-col">
-              <h1 className="text-xl md:text-2xl hover:text-gray-500 transition duration-150 ease-in-out">
+          <header className="h-20 bg-light dark:bg-dark drop-shadow-md">
+            <div className="max-w-7xl mx-auto h-full flex flex-row p-4 gap-4 items-center">
+              <div className="rounded-md h-full overflow-hidden hover:scale-120 transition duration-150 ease-in-out">
                 <NavLink to={{ pathname: "/" }}>
-                  <strong>Thomas Makin</strong>
+                  <img src={logo} alt="TJM logo" className="h-full" />
                 </NavLink>
-              </h1>
-              <h3 className="text-sm hover:text-gray-500 transition duration-150 ease-in-out">
-                <NavLink to={{ pathname: "/" }}>
-                  thomasmak.in
-                </NavLink>
-              </h3>
-            </div>
-            <div className="justify-end ml-auto" />
-            {/* desktop */}
-            <div className="hidden md:flex justify-end gap-6 pr-2">
-              {Object.keys(pages).map((page) => (
-                <div className="justify-end" key={page}>
-                  <NavLink
-                    prefetch="intent"
-                    className="text-xl hover:text-gray-500 transition-all ease-in-out"
-                    to={{ pathname: pages[page] }}
-                  >
-                    {page}
+              </div>
+              <div className="flex-col">
+                <h1 className="text-xl md:text-2xl hover:text-gray-500 transition duration-150 ease-in-out">
+                  <NavLink to={{ pathname: "/" }}>
+                    <strong>Thomas Makin</strong>
                   </NavLink>
-                </div>
-              ))}
-            </div>
-            {/* mobile */}
-            <div className="flex md:hidden justify-end h-full">
-              <img
-                src={burger}
-                alt="Hamburger menu"
-                className="h-full cursor-pointer"
-                onClick={() => setMenu(!menu)}
-              />
-            </div>
-            <div className="flex justify-end h-full">
-              <button
-                onClick={() => {
-                  toggleTheme();
-                }}
-              >
+                </h1>
+                <h3 className="text-sm hover:text-gray-500 transition duration-150 ease-in-out">
+                  <NavLink to={{ pathname: "/" }}>thomasmak.in</NavLink>
+                </h3>
+              </div>
+              <div className="justify-end ml-auto" />
+              {/* desktop */}
+              <div className="hidden md:flex justify-end gap-6 pr-2">
+                {Object.keys(pages).map((page) => (
+                  <div className="justify-end" key={page}>
+                    <NavLink
+                      prefetch="intent"
+                      className="text-xl hover:text-gray-500 transition-all ease-in-out"
+                      to={{ pathname: pages[page] }}
+                    >
+                      {page}
+                    </NavLink>
+                  </div>
+                ))}
+              </div>
+              {/* mobile */}
+              <div className="flex md:hidden justify-end h-full">
                 <img
-                  className="h-2/3 cursor-pointer"
-                  src={dark ? moon : moonLight}
+                  src={burger}
+                  alt="Hamburger menu"
+                  className="h-full cursor-pointer"
+                  onClick={() => setMenu(!menu)}
                 />
-              </button>
+              </div>
+              <div className="flex justify-end h-full">
+                <button
+                  onClick={() => {
+                    toggleTheme();
+                  }}
+                >
+                  <img
+                    className="h-2/3 cursor-pointer"
+                    src={dark ? moon : moonLight}
+                  />
+                </button>
+              </div>
             </div>
           </header>
           <main className="grow overflow-auto">
