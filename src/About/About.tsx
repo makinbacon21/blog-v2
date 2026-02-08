@@ -9,7 +9,16 @@ export function About() {
         <div className="bg-light dark:bg-dark rounded-lg shadow-lg col-span-1 md:col-span-4 p-6 flex flex-col gap-4 post overflow-y-auto overflow-x-hidden">
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl font-bold">Introduction</h1>
-            <p>Hi! My name is Thomas Makin, and I’m a System Software Engineer. I graduated from Swarthmore College with a B.S. in Engineering and a B.A. in CS in 2025, and I now work on pre- and post-silicon tooling for NVDIA's Tegra System Software division. I work on open-source, school, and personal projects from the bare metal up through webdev. I do a log of personal projects with a lot of specific steps, so I figured I’d document my work here (along with some other stuff) for other people to check out and follow along with, as well as for my own benefit. Aside from programming, I love CAD design, biking, gaming, and IT stuff like server maintenance.</p>
+            <p>Hi! My name is Thomas Makin, and I’m a System Software Engineer. I graduated from Swarthmore College with a B.S. in Engineering and a B.A. in CS in 2025, and I now work on pre- and post-silicon tooling for NVDIA's Tegra System Software division. I work on open-source, school, and personal projects from the bare metal up through webdev. I do a log of personal projects with a lot of specific steps, so I figured I’d document my work here (along with some other stuff) for other people to check out and follow along with, as well as for my own benefit. Aside from programming, I enjoy CAD, biking, hiking, gaming, and IT stuff like server maintenance.</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <h1 className="text-3xl font-bold">Hardware</h1>
+            <ul role="list" className="list-disc list-inside marker:text-bacongreen">
+              <li>Personal Desktop (Ryzen 5900X, Radeon RX 7900XTX) - Bazzite Deck</li>
+              <li>Framework Laptop 16 (Ryzen 7940HS) - Fedora Workstation</li>
+              <li>ThinkPad X1 Carbon 13th Gen (Core Ultra 7 268V) - KDE Neon (for now)</li>
+              <li>Server (Ryzen 3700X, Radeon RX 560 4GB) - Proxmox VE</li>
+            </ul>
           </div>
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl font-bold">Communities</h1>
