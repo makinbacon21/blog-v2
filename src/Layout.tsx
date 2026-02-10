@@ -1,5 +1,4 @@
-import { APITester } from "./APITester";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Outlet, NavLink } from "react-router";
 import "./index.css";
 

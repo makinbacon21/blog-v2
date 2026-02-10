@@ -33,4 +33,4 @@ COPY --from=prerelease /usr/src/app/ .
 USER bun
 # overridden by compose
 EXPOSE 3000/tcp
-ENTRYPOINT [ "bun", "run", "./src/index.ts" ]
+ENTRYPOINT [ "bun start" ]
