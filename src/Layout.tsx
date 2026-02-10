@@ -119,6 +119,7 @@ export function Layout() {
                   prefetch="viewport"
                   className="text-2xl"
                   to={{ pathname: pages[page] }}
+                  onClick={() => setMenu(false)}
                 >
                   {page}
                 </NavLink>
