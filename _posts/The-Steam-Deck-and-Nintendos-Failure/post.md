@@ -15,7 +15,7 @@ cover: /post/The-Steam-Deck-and-Nintendos-Failure/deck.jpg
 ---
 In the past month, we’ve seen two different handheld console announcements from two very different companies, and what they presented us with was both expected and representative of larger problems.
 
-![Nintendo Switch](/post/The-Steam-Deck-and-Nintendo’s-Failure/oled.webp)
+![Nintendo Switch](/post/The-Steam-Deck-and-Nintendos-Failure/oled.webp)
 Credit: [https://www.nintendo.com/switch/oled-model/](https://www.nintendo.com/switch/oled-model/)
 
 ## The Nintendo Switch
