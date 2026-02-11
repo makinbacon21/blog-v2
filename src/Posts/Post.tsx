@@ -29,6 +29,7 @@ export function Post() {
             />
             <div className="absolute inset-0 bg-linear-to-t from-light dark:from-dark from-10% via-light/80 dark:via-dark/80 via-30% to-transparent to-70%"></div>
             <div className="flex flex-col z-10 pt-25 justify-end">
+              <h3 className="text-lg z-10">{(new Date(post.data.date)).toLocaleDateString('en-US', { month: "short", day: "numeric", year: "numeric" })}</h3>
               <h1 className="text-2xl md:text-3xl z-10 mb-2 font-bold">{post.data.title}</h1>
             </div>
           </div>

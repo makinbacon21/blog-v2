@@ -44,7 +44,7 @@ export function Layout() {
     <>
       <div className="fixed rounded-full w-300 h-300 -top-100 -left-100 dark:w-200 dark:h-200 dark:-top-50 dark:-left-45 bg-radial from-bacongreen to-transparent to-70% opacity-80 dark:opacity-60" />
       <div className="fixed rounded-full w-500 h-500 -bottom-200 -right-200 dark:w-300 dark:h-300 dark:-bottom-100 dark:-right-100 bg-radial from-baconpink to-transparent to-50% opacity-80 dark:opacity-60" />
-      <div className="text-bg bg-white dark:text-white dark:bg-bg font-sans w-screen h-screen overscroll-x-contain">
+      <div className="text-bg bg-white dark:text-white dark:bg-bg font-sans w-screen h-screen overscroll-x-contain overscroll-y-none overflow-y-none">
         <div className="w-full h-full relative z-10 flex flex-col">
           <header className="h-20 bg-light dark:bg-dark drop-shadow-md">
             <div className="max-w-7xl mx-auto h-full flex flex-row p-4 gap-4 items-center">
