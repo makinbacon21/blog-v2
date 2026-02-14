@@ -37,10 +37,7 @@
 
 .post h1 {
     font-weight: bold;
-    font-size: var(--text-2xl);
-    @media (min-width: theme(--breakpoint-md)) {
-        font-size: var(--text-3xl);
-    }
+    @apply text-2xl md:text-3xl;
 }
 
 .post h2 {
@@ -50,10 +47,7 @@
     align-items: center;
 
     font-weight: bold;
-    font-size: var(--text-xl);
-    @media (min-width: theme(--breakpoint-md)) {
-        font-size: var(--text-2xl);
-    }
+    @apply text-xl md:text-2xl;
 }
 
 .post h2::after {
@@ -92,11 +86,12 @@
 }
 
 .post pre {
-    background-color: var(--color-white);
-    @variant dark {
-        background-color: var(--color-bg);
-    }
+    @apply bg-white dark:bg-bg;
     padding: calc(var(--spacing) * 3);
     border-radius: var(--radius-sm);
     overflow-x: auto;
+}
+
+.post ul {
+    @apply list-disc list-inside marker:text-bacongreen;
 }

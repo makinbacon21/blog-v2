@@ -2,10 +2,9 @@ import { useState } from "react";
 import { Outlet, NavLink } from "react-router";
 import "./index.css";
 
-import logo from "./logo.svg";
-import burger from "./burger.svg";
-import moon from "./moon.svg";
-import moonLight from "./moon-light.svg";
+import LogoIcon from "./icons/LogoIcon";
+import BurgerIcon from "./icons/BurgerIcon";
+import MoonIcon from "./icons/MoonIcon";
 
 const pages: Record<string, string> = {
   Home: "/",
@@ -50,7 +49,7 @@ export function Layout() {
             <div className="max-w-7xl mx-auto h-full flex flex-row p-4 gap-4 items-center">
               <div className="rounded-md h-full overflow-hidden hover:scale-120 transition duration-150 ease-in-out">
                 <NavLink to={{ pathname: "/" }}>
-                  <img src={logo} alt="TJM logo" className="h-full" />
+                  <LogoIcon className="h-full" />
                 </NavLink>
               </div>
               <div className="flex-col">
@@ -80,12 +79,7 @@ export function Layout() {
               </div>
               {/* mobile */}
               <div className="flex md:hidden justify-end h-full">
-                <img
-                  src={burger}
-                  alt="Hamburger menu"
-                  className="h-full cursor-pointer"
-                  onClick={() => setMenu(!menu)}
-                />
+                <BurgerIcon fill="black" className="h-full cursor-pointer" onClick={() => setMenu(!menu)} />
               </div>
               <div className="flex justify-end h-full">
                 <button
@@ -93,10 +87,7 @@ export function Layout() {
                     toggleTheme();
                   }}
                 >
-                  <img
-                    className="h-2/3 cursor-pointer"
-                    src={dark ? moon : moonLight}
-                  />
+                <MoonIcon className="h-2/3 cursor-pointer" fill={dark ? "white" : "black"} />
                 </button>
               </div>
             </div>
