@@ -19,7 +19,7 @@ export function Post() {
 
   useEffect(() => {
     Prism.highlightAll();
-  }, []);
+  }, [expanded]);
 
   return (
     <div className="p-4 h-full w-full flex flex-row justify-center items-center max-w-7xl mx-auto">
@@ -28,7 +28,7 @@ export function Post() {
         <div
           className={
             (expanded ? "fixed top-0 left-0 w-full h-full" : "") +
-            " transition-all duration-150 ease-in-out bg-light dark:bg-dark rounded-lg shadow-lg col-span-1 md:col-span-4 p-6 flex flex-col gap-4 overflow-y-auto overflow-x-hidden"
+            " transition-all duration-150 ease-in-out bg-light dark:bg-dark rounded-lg shadow-lg col-span-1 md:col-span-4 p-6 flex flex-col gap-4 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-bacongreen"
           }
         >
           {expanded ? (
@@ -42,7 +42,7 @@ export function Post() {
               onClick={() => setExpanded(!expanded)}
             />
           )}
-          <div className="max-w-6xl w-full self-center relative p-4 rounded-md shadow-lg">
+          <div className="max-w-7xl w-full self-center relative p-4 rounded-md shadow-lg">
             <img
               src={post.data.cover}
               alt={post.data.title}
@@ -62,7 +62,7 @@ export function Post() {
               </h1>
             </div>
           </div>
-          <div className="z-10 self-center max-w-6xl justify-end">
+          <div className="z-10 self-center w-full max-w-7xl justify-end">
             <div
               className="z-10 overflow-hidden post flex flex-col gap-4"
               dangerouslySetInnerHTML={{ __html: post.content }}

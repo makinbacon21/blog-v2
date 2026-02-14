@@ -14,6 +14,21 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@utility scrollbar-thin {
+    scrollbar-width: thin;
+}
+
+@utility scrollbar-hidden {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@utility scrollbar-thumb-* {
+    scrollbar-color: --value(--color-*) transparent;
+}
+
 /* css for md post formatting */
 
 .post a, .feed a {
