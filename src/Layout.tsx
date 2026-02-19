@@ -79,7 +79,7 @@ export function Layout() {
               </div>
               {/* mobile */}
               <div className="flex md:hidden justify-end h-full">
-                <BurgerIcon fill="black" className="h-full cursor-pointer" onClick={() => setMenu(!menu)} />
+								<BurgerIcon className="stroke-black dark:stroke-white h-full cursor-pointer" onClick={() => setMenu(!menu)} />
               </div>
               <div className="flex justify-end h-full">
                 <button
