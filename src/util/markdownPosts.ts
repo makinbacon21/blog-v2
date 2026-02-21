@@ -18,6 +18,37 @@ export interface PostFile extends GrayMatterFile<string> {
   };
 }
 
+const options: Bun.markdown.Options = {
+  wikiLinks: true,
+};
+
+const callbacks: Bun.markdown.RenderCallbacks = {
+  heading: (children, { level }) => `<h${level}>${children}</h${level}>`,
+  paragraph: children => `<p>${children}</p>`,
+  strong: children => `<strong>${children}</strong>`,
+  emphasis: children => `<em>${children}</em>`,
+  codespan: children => `<code>${children}</code>`,
+  code: (children, meta) =>
+    meta?.language
+      ? `<pre><code class="language-${meta.language}">${children}</code></pre>`
+      : `<pre><code>${children}</code></pre>`,
+  link: (children, { href, title }) =>
+    title ? `<a href="${href}" title="${title}">${children}</a>` : `<a href="${href}">${children}</a>`,
+  image: (children, { src, title }) =>
+    title ? `<img src="${src}" class="max-w-lg place-self-center" loading="lazy" alt="${children}" title="${title}" />` : `<img src="${src}" class="max-w-lg place-self-center" loading="lazy" alt="${children}" />`,
+  list: (children, { ordered, start }) => (ordered ? `<ol start="${start}">${children}</ol>` : `<ul>${children}</ul>`),
+  listItem: children => `<li>${children}</li>`,
+  blockquote: children => `<blockquote>${children}</blockquote>`,
+  hr: () => `<hr />`,
+  strikethrough: children => `<del>${children}</del>`,
+  table: children => `<table>${children}</table>`,
+  thead: children => `<thead>${children}</thead>`,
+  tbody: children => `<tbody>${children}</tbody>`,
+  tr: children => `<tr>${children}</tr>`,
+  th: children => `<th>${children}</th>`,
+  td: children => `<td>${children}</td>`,
+};
+
 const isPostFile = (file: GrayMatterFile<string>): file is PostFile => {
   return file.data.date && file.data.title;
 };
@@ -27,9 +58,9 @@ export const getPost = async (file: string): Promise<PostFile | null> => {
 
   if (existsSync(postsPath)) {
     const fileData = matter(await Bun.file(path.join(postsPath, POST_NAME)).text());
-    fileData.content = Bun.markdown.html(fileData.content);
+    fileData.content = Bun.markdown.render(fileData.content, callbacks, options);
     if (fileData.excerpt) {
-      fileData.excerpt = Bun.markdown.html(fileData.excerpt);
+      fileData.excerpt = Bun.markdown.render(fileData.excerpt, callbacks, options);
     }
     if (!fileData.data.date) {
       console.log(`${file} is missing required front matter: date`);
@@ -57,9 +88,9 @@ export const getPosts = async (): Promise<PostFile[] | null> => {
       await Promise.all(
         dirs.map(async (dir) => {
           const fileData = matter(await Bun.file(path.join(postsPath, dir, POST_NAME)).text());
-          fileData.content = Bun.markdown.html(fileData.content);
+          fileData.content = Bun.markdown.render(fileData.content, callbacks, options);
           if (fileData.excerpt) {
-            fileData.excerpt = Bun.markdown.html(fileData.excerpt);
+            fileData.excerpt = Bun.markdown.render(fileData.excerpt, callbacks, options);
           }
           if (!fileData.data.date) {
             console.log(`${dir} is missing required front matter: date`);

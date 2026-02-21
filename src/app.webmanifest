@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/refs/heads/master/src/schemas/json/web-manifest.json",
+  "background_color": "#1a1a1a",
+  "dir": "ltr",
+  "display": "browser",
+  "name": "thomasmak.in",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "thomasmak.in",
+  "start_url": "/",
+  "theme_color": "#31CC3A",
+  "shortcuts": [
+    {
+      "name": "About",
+      "short_name": "About",
+      "description": "About Thomas",
+      "url": "/about"
+    },
+    {
+      "name": "Posts",
+      "short_name": "Posts",
+      "description": "Thomas's blog feed",
+      "url": "/posts"
+    }
+  ],
+  "icons": [
+    {
+      "src": "logo.svg",
+      "type": "image/svg+xml",
+      "isSquare": false,
+      "isPng": false,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 0,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    },
+    {
+      "src": "https://thomasmak.in/favicon.ico",
+      "type": "image/x-icon",
+      "isSquare": false,
+      "isPng": false,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 0,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ]
+}

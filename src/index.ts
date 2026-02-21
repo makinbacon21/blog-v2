@@ -1,5 +1,6 @@
 import { serve } from "bun";
 import index from "./index.html";
+
 import { getPost, getPosts, type PostFile } from "./util/markdownPosts";
 
 const server = serve({

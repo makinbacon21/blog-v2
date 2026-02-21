@@ -1,6 +1,6 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
+import type { LoaderFunctionArgs } from "react-router";
 import type { PostFile } from "@/util/markdownPosts";
-import { useNavigate } from "react-router";
 
 export async function feedLoader() {
   const response = await fetch(`/api/markdown`);
@@ -13,7 +13,7 @@ export async function feedLoader() {
   return { posts: data.posts };
 }
 
-export async function postLoader({ params }: { params: { title: string } }) {
+export async function postLoader({ params }: LoaderFunctionArgs) {
   const response = await fetch(`/api/markdown?file=${params.title}`);
   const data = await response.json();
 

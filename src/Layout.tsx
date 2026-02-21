@@ -20,6 +20,12 @@ function getDark() {
   );
 }
 
+export function HydrateFallback() {
+	return (
+		<div className="bg-white dark:bg-bg w-dvw h-dvh"></div>
+	);
+}
+
 export function Layout() {
   const [menu, setMenu] = useState(false);
   const [dark, setDark] = useState(getDark());

@@ -11,7 +11,7 @@ import {
   RouterProvider,
 } from "react-router";
 
-import { Layout } from "./Layout";
+import { Layout, HydrateFallback } from "./Layout";
 
 import { Home } from "./Home/Home";
 import { About } from "./About/About";
@@ -23,7 +23,8 @@ function start() {
   const root = createRoot(document.getElementById("root")!);
   let router = createBrowserRouter([
     {
-      Component: Layout,
+			Component: Layout,
+			HydrateFallback: HydrateFallback,
       children: [
         {
           index: true,
