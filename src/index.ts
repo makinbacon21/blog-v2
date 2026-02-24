@@ -2,18 +2,37 @@ import { serve } from "bun";
 import index from "./index.html";
 
 import { getPost, getPosts, type PostFile } from "./util/markdownPosts";
+import { genPNG } from "./util/createImage";
+import OpenGraph from "./OpenGraph/Image";
 
 const server = serve({
   routes: {
     "/post/*": async (req) => {
       const url = new URL(req.url);
-      const filePath = `./_posts${url.pathname.replace('/post', '')}`;
 
-      const file = Bun.file(filePath);
-      const exists = await file.exists();
+      /* handle opengraph gen */
+      if (req.url.includes('/og/')) {
+        const postUrl = req.url.replace('/post/og', '');
+        const fetchedPost = await getPost(postUrl);
+        if (!fetchedPost)
+          return Response.json({ error: 'File not found' }, { status: 404 });
 
-      if (exists) {
-        return new Response(file);
+        const png = await genPNG(OpenGraph(fetchedPost.data.title, fetchedPost.data.cover));
+        return new Response(new Uint8Array(png), {
+          headers: {
+            "Content-Type": "image/png",
+          },
+        });
+
+      } else {
+        const filePath = `./_posts${url.pathname.replace('/post', '')}`;
+
+        const file = Bun.file(filePath);
+        const exists = await file.exists();
+
+        if (exists) {
+          return new Response(file);
+        }
       }
 
       return Response.json({ error: 'File not found' }, { status: 404 });
