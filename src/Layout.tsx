@@ -21,9 +21,7 @@ function getDark() {
 }
 
 export function HydrateFallback() {
-	return (
-		<div className="bg-white dark:bg-bg w-dvw h-dvh"></div>
-	);
+  return <div className="bg-white dark:bg-bg w-dvw h-dvh"></div>;
 }
 
 export function Layout() {
@@ -55,16 +53,16 @@ export function Layout() {
             <div className="max-w-7xl mx-auto h-full flex flex-row p-4 gap-4 items-center">
               <div className="rounded-md h-full overflow-hidden hover:scale-120 transition duration-150 ease-in-out">
                 <NavLink to={{ pathname: "/" }}>
-                  <LogoIcon className="h-full" />
+                  <LogoIcon className="cursor-pointer h-full" />
                 </NavLink>
               </div>
               <div className="flex-col">
-                <h1 className="text-xl md:text-2xl hover:text-gray-500 transition duration-150 ease-in-out">
+                <h1 className="text-xl cursor-pointer md:text-2xl hover:text-gray-500 transition duration-150 ease-in-out">
                   <NavLink to={{ pathname: "/" }}>
                     <strong>Thomas Makin</strong>
                   </NavLink>
                 </h1>
-                <h3 className="text-sm hover:text-gray-500 transition duration-150 ease-in-out">
+                <h3 className="text-sm cursor-pointer hover:text-gray-500 transition duration-150 ease-in-out">
                   <NavLink to={{ pathname: "/" }}>thomasmak.in</NavLink>
                 </h3>
               </div>
@@ -75,7 +73,7 @@ export function Layout() {
                   <div className="justify-end" key={page}>
                     <NavLink
                       prefetch="intent"
-                      className="text-xl hover:text-gray-500 transition-all ease-in-out"
+                      className="text-xl cursor-pointer hover:text-gray-500 transition-all ease-in-out"
                       to={{ pathname: pages[page] }}
                     >
                       {page}
@@ -85,7 +83,10 @@ export function Layout() {
               </div>
               {/* mobile */}
               <div className="flex md:hidden justify-end h-full">
-								<BurgerIcon className="stroke-black dark:stroke-white h-full cursor-pointer" onClick={() => setMenu(!menu)} />
+                <BurgerIcon
+                  className="stroke-black dark:stroke-white h-full cursor-pointer"
+                  onClick={() => setMenu(!menu)}
+                />
               </div>
               <div className="flex justify-end h-full">
                 <button
@@ -93,7 +94,10 @@ export function Layout() {
                     toggleTheme();
                   }}
                 >
-                <MoonIcon className="h-2/3 cursor-pointer" fill={dark ? "white" : "black"} />
+                  <MoonIcon
+                    className="h-2/3 cursor-pointer hover:fill-gray-500 transition duration-150 ease-in-out"
+                    fill={dark ? "white" : "black"}
+                  />
                 </button>
               </div>
             </div>
