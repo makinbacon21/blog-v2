@@ -14,10 +14,10 @@ export function About() {
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl font-bold">Hardware</h1>
             <ul role="list" className="list-disc list-inside marker:text-bacongreen">
-              <li>Personal Desktop (Ryzen 5900X, Radeon RX 7900XTX) - Bazzite Deck</li>
-              <li>Framework Laptop 16 (Ryzen 7940HS) - Fedora Workstation</li>
-              <li>ThinkPad X1 Carbon 13th Gen (Core Ultra 7 268V) - KDE Neon (for now)</li>
-              <li>Server (Ryzen 3700X, Radeon RX 560 4GB) - Proxmox VE</li>
+              <li>Personal Desktop (Ryzen 5900X, Radeon RX 7900XTX) - Bazzite Deck 44-testing</li>
+              <li>Framework Laptop 16 (Ryzen 7940HS) - Fedora 44 Workstation</li>
+              <li>ThinkPad X1 Carbon 13th Gen (Core Ultra 7 268V) - Ubuntu 26.04</li>
+              <li>Server (Ryzen 3700X, Radeon RX 560 4GB) - Proxmox VE 9</li>
             </ul>
           </div>
           <div className="flex flex-col gap-2">

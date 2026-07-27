@@ -1,5 +1,7 @@
 import { serve } from "bun";
 import index from "./index.html";
+import llms from "./llms.txt";
+import manifest from "./app.webmanifest" with { type: "text" };
 
 import { getPost, getPosts, type PostFile } from "./util/markdownPosts";
 
@@ -62,6 +64,10 @@ const server = serve({
         }
       },
     },
+
+    "/llms.txt": new Response(llms),
+
+    "/app.webmanifest": new Response(manifest),
 
     "/*": index,
   },
