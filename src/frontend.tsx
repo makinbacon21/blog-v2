@@ -6,10 +6,7 @@
  */
 
 import { createRoot } from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 
 import { Layout, HydrateFallback } from "./Layout";
 
@@ -19,12 +16,19 @@ import { feedLoader, postLoader } from "./components/Feed";
 import { Posts } from "./Posts/Posts";
 import { Post } from "./Posts/Post";
 
+// Inject the web manifest at runtime. Doing this in HTML makes Bun's bundler
+// try to resolve/hash it as a build asset; pointing at the server route avoids that.
+const manifestLink = document.createElement("link");
+manifestLink.rel = "manifest";
+manifestLink.href = "/app.webmanifest";
+document.head.appendChild(manifestLink);
+
 function start() {
   const root = createRoot(document.getElementById("root")!);
   let router = createBrowserRouter([
     {
-			Component: Layout,
-			HydrateFallback: HydrateFallback,
+      Component: Layout,
+      HydrateFallback: HydrateFallback,
       children: [
         {
           index: true,
@@ -44,13 +48,11 @@ function start() {
           path: "/feed/:title",
           Component: Post,
           loader: postLoader,
-        }
+        },
       ],
     },
   ]);
-  root.render(
-    <RouterProvider router={router} />,
-  );
+  root.render(<RouterProvider router={router} />);
 }
 
 if (document.readyState === "loading") {

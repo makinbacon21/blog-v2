@@ -9,7 +9,7 @@ const server = serve({
   routes: {
     "/post/*": async (req) => {
       const url = new URL(req.url);
-      const filePath = `./_posts${url.pathname.replace('/post', '')}`;
+      const filePath = `./_posts${url.pathname.replace("/post", "")}`;
 
       const file = Bun.file(filePath);
       const exists = await file.exists();
@@ -18,7 +18,7 @@ const server = serve({
         return new Response(file);
       }
 
-      return Response.json({ error: 'File not found' }, { status: 404 });
+      return Response.json({ error: "File not found" }, { status: 404 });
     },
 
     "/public/*": async (req) => {
@@ -32,25 +32,25 @@ const server = serve({
         return new Response(file);
       }
 
-      return Response.json({ error: 'File not found' }, { status: 404 });
+      return Response.json({ error: "File not found" }, { status: 404 });
     },
 
     "/api/markdown": {
       async GET(req) {
         const url = new URL(req.url);
-        const file = url.searchParams.get('file');
+        const file = url.searchParams.get("file");
 
         let posts: PostFile[] = [];
         if (file) {
           const fetchedPost = await getPost(file);
           if (!fetchedPost)
-            return Response.json({ error: 'File not found' }, { status: 404 });
+            return Response.json({ error: "File not found" }, { status: 404 });
 
           posts.push(fetchedPost);
         } else {
           const fetchedPosts = await getPosts();
           if (!fetchedPosts)
-            return Response.json({ error: 'Files not found' }, { status: 404 });
+            return Response.json({ error: "Files not found" }, { status: 404 });
 
           posts = fetchedPosts;
         }
@@ -60,14 +60,16 @@ const server = serve({
             posts,
           });
         } catch (error) {
-          return Response.json({ error: 'Failed to respond' }, { status: 500 });
+          return Response.json({ error: "Failed to respond" }, { status: 500 });
         }
       },
     },
 
     "/llms.txt": new Response(llms),
 
-    "/app.webmanifest": new Response(manifest),
+    "/app.webmanifest": new Response(manifest, {
+      headers: { "Content-Type": "application/manifest+json" },
+    }),
 
     "/*": index,
   },
