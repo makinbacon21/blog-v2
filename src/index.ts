@@ -25,13 +25,27 @@ const server = serve({
       const url = new URL(req.url);
       const filePath = `./${url.pathname}`;
 
+      const size = parseInt(url.searchParams.get("size") ?? "0", 10);
+      const quality = parseInt(url.searchParams.get("quality") ?? "0", 10);
+      const rotation = parseInt(url.searchParams.get("rot") ?? "0", 10);
+
       const file = Bun.file(filePath);
       const exists = await file.exists();
-
       if (exists) {
-        return new Response(file);
-      }
+        if (!(size || quality || rotation)) return new Response(file);
 
+        const img = file.image();
+        if (size > 0) img.resize(size);
+        if (quality > 0) img.webp({ quality });
+        if (rotation > 0) img.rotate(rotation);
+
+        return new Response(await img.blob(), {
+          headers: {
+            "Content-Type": "image/webp",
+            "Cache-Control": "public, max-age=31536000, immutable",
+          },
+        });
+      }
       return Response.json({ error: "File not found" }, { status: 404 });
     },
 

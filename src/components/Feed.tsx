@@ -29,43 +29,67 @@ interface FeedProps {
   bigHover?: boolean;
 }
 
-export function Feed({ count, bigHover } : FeedProps) {
+export function Feed({ count, bigHover }: FeedProps) {
   const { posts } = useLoaderData();
-  let usedPosts : PostFile[];
-  if (count)
-    usedPosts = posts.slice(0, count);
-  else
-    usedPosts = posts;
+  let usedPosts: PostFile[];
+  if (count) usedPosts = posts.slice(0, count);
+  else usedPosts = posts;
 
   let navigate = useNavigate();
 
-  const hoverClass = bigHover ? "md:hover:scale-105 md:hover:-translate-x-10" : "md:hover:scale-102";
+  const hoverClass = bigHover
+    ? "md:hover:scale-105 md:hover:-translate-x-10"
+    : "md:hover:scale-102";
 
   return (
     <div className="flex flex-col gap-4">
       {usedPosts.map((post: PostFile) => {
-        const split = post.content.split('\n');
-        const excerpt = (post.excerpt ? post.excerpt : [split[0], split[1]].join("\n")).split(' ').slice(0, 50).join(' ');
-        if (!excerpt)
-          return (<></>);
+        let excerpt = "";
+        if (post.excerpt) {
+          excerpt = post.excerpt;
+        } else {
+          const split = post.content.split("\n").slice(0, 2);
+          excerpt = [split[0], split[1]]
+            .join("\n")
+            .replaceAll(/<img\b[^>]*>/gi, "");
+        }
+
+        excerpt = excerpt.split(" ").slice(0, 50).join(" ");
+        if (!excerpt) return <></>;
         return (
-          <div onClick={() => navigate(`/feed/${post.data.path}`)} key={post.data.title} className={'relative cursor-pointer p-4 rounded-lg shadow-lg pt-25 overflow-hidden transition duration-150 ease-in-out ' + hoverClass}>
+          <div
+            onClick={() => navigate(`/feed/${post.data.path}`)}
+            key={post.data.title}
+            className={
+              "relative cursor-pointer p-4 rounded-lg shadow-lg pt-25 overflow-hidden transition duration-150 ease-in-out " +
+              hoverClass
+            }
+          >
             <img
-              src={post.data.cover}
+              src={`${post.data.cover}?quality=80&size=1080`}
               alt={post.data.title}
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-t from-light dark:from-dark from-10% via-light/80 dark:via-dark/80 via-50% to-transparent to-70%"></div>
             <div className="flex flex-col z-10 justify-end">
               <h1 className="text-2xl z-10 font-bold">{post.data.title}</h1>
-              <h3 className="text-lg z-10 mb-2">{(new Date(post.data.date)).toLocaleDateString('en-US', { month: "short", day: "numeric", year: "numeric" })}</h3>
-              <div className="z-10 overflow-hidden feed" dangerouslySetInnerHTML={{ __html: excerpt }} />
+              <h3 className="text-lg z-10 mb-2">
+                {new Date(post.data.date).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </h3>
+              <div
+                className="z-10 overflow-hidden feed"
+                dangerouslySetInnerHTML={{ __html: excerpt }}
+              />
             </div>
           </div>
         );
       })}
     </div>
-  )
+  );
 }
 
 export default Feed;
